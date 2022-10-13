@@ -1,0 +1,41 @@
+import { IsNotEmptyString } from "src/utils.common/utils.decorator.common/utils.decorator.common";
+import { ApiProperty } from "@nestjs/swagger";
+import { UtilsBaseExceptionLangValidator } from "src/utils.common/utils.exception.lang.common/utils.base.exception.lang.validator";
+
+export class AdminTopBestSalerReportQueryDTO {
+
+    @ApiProperty({
+        required: false,
+        default: "",
+        example: "20/10/1997",
+        description: UtilsBaseExceptionLangValidator.exceptionStringFromDate(),
+      })
+    @IsNotEmptyString()
+    readonly from_date: string = "";
+
+    @ApiProperty({
+        required: false,
+        default: "",
+        example: "20/10/1997",
+        description: UtilsBaseExceptionLangValidator.exceptionStringToDate(),
+      })
+    @IsNotEmptyString()
+    readonly to_date: string = "";
+
+    @ApiProperty({
+        required: false,
+        default: -1,
+        example: 1,
+        description: UtilsBaseExceptionLangValidator.exceptionStringPage(),
+      })
+    readonly _offset: number = -1;
+
+
+    @ApiProperty({
+        required: false,
+        default: -1,
+        example: 500,
+        description: UtilsBaseExceptionLangValidator.exceptionStringLimit(),
+      })
+    readonly _limit: number = -1;
+}
